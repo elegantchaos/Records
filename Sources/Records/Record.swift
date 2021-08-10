@@ -29,7 +29,6 @@ public final class Record: NSManagedObject, IdentifiedManagedObject {
 
     public override func awakeFromInsert() {
         id = UUID().uuidString
-        set("Untitled", forKey: "name")
     }
 }
 
