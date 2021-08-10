@@ -149,6 +149,13 @@ public extension Record {
             )
     }
 
+    func doubleBinding(forKey key: String) -> Binding<Double> {
+        return Binding<Double>(
+            get: { self.double(forKey: key) ?? 0 },
+            set: { newValue in self.set(newValue, forKey: key) }
+            )
+    }
+
     func save() throws {
         try managedObjectContext?.save()
     }
