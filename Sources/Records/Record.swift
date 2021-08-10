@@ -86,6 +86,18 @@ public extension Record {
         }
     }
     
+    func set(stat: Any, forKey key: String) {
+        switch stat {
+            case is String: set(stat as! String, forKey: key)
+            case is Int: set(stat as! Int, forKey: key)
+            case is Double: set(stat as! Double, forKey: key)
+            case is Bool: set(stat as! Bool, forKey: key)
+            default:
+                print("Can't store \(stat) (\(type(of: stat)))")
+                break
+        }
+    }
+    
     func set(_ string: String, forKey key: String) {
         let entry = guaranteedEntry(forKey: key)
         let type = Int16(EntryType.string.rawValue)
